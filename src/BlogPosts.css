@@ -1,0 +1,60 @@
+body {
+    background-color: #eaeaea; /* Light grey background */
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* Simple sans-serif font */
+    color: #333; /* Dark grey text */
+    margin: 0;
+    padding: 0;
+  }
+  
+  .blog-posts {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 20px;
+  }
+  
+  h1 {
+    color: #000; /* Black text for the heading */
+    text-align: center;
+    font-weight: normal; /* Regular weight */
+    font-size: 2em; /* Moderate size */
+    margin-bottom: 60px; /* Increased gap below the title */
+  }
+  
+  .post {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc; /* Light grey bottom border */
+  }
+  
+  h2 {
+    color: #000; /* Black for post titles */
+    font-weight: normal;
+    font-size: 1.5em;
+    margin: 0;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smooth transition for style changes */
+  }
+  
+  .post.open h2 {
+    font-weight: bold; /* Bold when opened */
+    font-style: italic; /* Italic when opened */
+  }
+  
+  .date {
+    color: #666; /* Medium grey for date */
+    font-size: 0.9em;
+    margin-top: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .content {
+    line-height: 1.6;
+    color: #333; /* Consistent dark grey for content */
+    font-size: 1em;
+  }
+  
+  span {
+    color: #000; /* Black for the dropdown icon */
+    font-size: 1.2em;
+  }
+  

@@ -1,0 +1,329 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fbfaf4;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.youtube-container {
+    width: 95%; /* Increased from 85% to allow for 4 videos per row */
+    margin: 0 auto;
+    padding: 1% 0;
+    font-family: Helvetica, Arial, sans-serif;
+    /* background-color: #FAF9F6; */
+    min-height: 100vh; /* Ensure the container takes at least the full viewport height */
+}
+
+p {
+    color: #091717;
+    font-size: 1rem;
+}
+
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for mobile */
+    gap: 14px; /* Keep the gap consistent for desktop as well */
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .video-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns for tablet screens */
+    }
+}
+
+.video-item {
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 20px; /* Ensure separation from the next row of items */
+}
+
+.video-summary {
+    color: #091717; /* Set the summary text color to grey */
+    font-size: 0.9rem; /* Adjust font size for the summary */
+    margin-top: 5px; /* Add some spacing between the title and the summary */
+    font-family: Helvetica, Arial, sans-serif; /* Ensure consistent font */
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: 300;
+    letter-spacing: 0.05rem;
+}
+
+.video-thumbnail {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+    border-top-left-radius: 1rem; /* Rounded corners only at the top */
+    border-top-right-radius: 1rem; /* Rounded corners only at the top */
+    border-bottom-left-radius: 1rem; /* No rounded corners at the bottom */
+    border-bottom-right-radius: 1rem; /* No rounded corners at the bottom */
+    overflow: hidden;
+    margin-bottom: 10px; /* Space between thumbnail and title */
+}
+
+.video-thumbnail img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    border-radius: inherit;
+}
+
+.video-item:hover .video-thumbnail img {
+    transform: scale(1.05);
+}
+
+.video-title {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 1rem;
+    margin-top: 10px;
+    margin-bottom: 5px; /* Space between title and summary */
+    color: #091717;
+    text-align: left;
+    font-weight: 500;
+    padding-left: 10px;
+    padding-right: 10px;
+    letter-spacing: 0.01rem;
+}
+
+.watch-text {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fbfaf4;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-family: Helvetica, Arial, sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+.video-item:hover .watch-text {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+/* Responsive layout */
+@media (min-width: 1024px) {
+    .video-grid {
+        grid-template-columns: repeat(4, 1fr); /* 4 columns for desktop */
+        gap: 20px; /* Keep the gap consistent for desktop as well */
+    }
+    
+    .video-item {
+        width: 100%; /* Let the grid control the width */
+        max-width: 458.98px; /* Max width to maintain aspect ratio */
+    }
+    
+    .video-thumbnail {
+        padding-top: 56.25%; /* Maintain 16:9 aspect ratio */
+        height: auto; /* Let the padding control the height */
+    }
+    
+    .video-title {
+        font-size: 1rem; /* Slightly reduced font size */
+    }
+
+    p {
+        font-size: 2rem;
+    }
+
+    .title-and-input {
+        display: flex;
+        align-items: center;
+        gap: 15px; /* Space between title, input, and button */
+        margin-bottom: 20px;
+    }
+}
+
+.search-box {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.search-box input {
+    width: 80%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Adjustments for very small screens */
+@media (max-width: 480px) {
+    .video-grid {
+        gap: 8px; /* Further reduced gap for very small screens */
+    }
+    
+    .video-title {
+        font-size: 0.8rem;
+    }
+
+    .subtitle {
+        font-size: 0.8rem;
+      }
+
+    p {
+        font-size: 1rem;
+    }
+
+
+    .new-video-input {
+        font-size: 1rem; /* 1rem for smaller screens */
+    }
+
+    /* Placeholder styling for smaller screens */
+    .new-video-input::placeholder {
+        font-size: 0.8rem; /* 1rem placeholder text */
+    }
+
+    .title-and-input {
+        display: flex;
+        align-items: center;
+        gap: 5px; /* Space between title, input, and button */
+        margin-bottom: 20px;
+    }
+}
+
+.video-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.video-overlay-content {
+    width: 90%;
+    max-width: 1200px;
+    aspect-ratio: 16 / 9;
+    background-color: #091717;
+    position: relative;
+}
+
+.subtitle {
+    color: #909090;
+    font-size: 1.2rem;
+    font-style: italic;
+    margin-left: 10px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  }
+
+.video-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px; /* Adjusted to position it at the top */
+    right: 10px; /* Adjusted to position it at the right */
+    background-color: rgba(255, 255, 255, 0.3);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    z-index: 1001; /* Ensure it is above the video */
+}
+
+.close-button:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .video-overlay-content {
+        width: 95%;
+        max-height: 80vh;
+    }
+
+    .close-button {
+        top: -35px;
+        right: 0;
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+}
+
+.title-and-input {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between title, input, and button */
+    margin-bottom: 20px;
+}
+
+.new-video-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.new-video-input {
+    width: 40%; /* Adjust the width based on the screen size */
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.submit-button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.submit-button:hover {
+    background-color: #218838;
+}
+
+.toast-message {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    z-index: 1001;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeout {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
